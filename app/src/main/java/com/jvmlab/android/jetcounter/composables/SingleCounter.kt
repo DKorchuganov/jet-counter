@@ -17,7 +17,7 @@ import androidx.lifecycle.LiveData
 fun SingleCounter(
     countStringLive: LiveData<String>,
     buttonEventHandler: (String) -> Unit,
-    name: String
+    name: String? = null
 ) {
     val countString: String by countStringLive.observeAsState("")
     Card(
@@ -25,10 +25,13 @@ fun SingleCounter(
         elevation = 4.dp
     ) {
         Column (modifier = Modifier.padding(16.dp)) {
-            Text(
-                modifier = Modifier.padding(bottom = 16.dp),
-                text = name,
-                fontSize = 32.sp)
+            name?.let {
+                Text(
+                    modifier = Modifier.padding(bottom = 16.dp),
+                    text = name,
+                    fontSize = 32.sp
+                )
+            }
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
