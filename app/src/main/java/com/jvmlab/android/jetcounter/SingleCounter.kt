@@ -1,6 +1,6 @@
 package com.jvmlab.android.jetcounter
 
-class SingleCounter() {
+class SingleCounter {
     private var count = 0
 
     fun getCount(): Int {

@@ -9,7 +9,14 @@ class CounterViewModel : ViewModel() {
     private val _countStringLive = MutableLiveData("0")
     val countStringLive: LiveData<String> = _countStringLive
 
-    fun buttonEventHandler(buttonId: String) {
+    fun buttonEventHandler(buttonAddress: ButtonAddress) {
+        when (buttonAddress.screen) {
+            "SimpleCounter" -> simpleCounterEventHandler(buttonAddress.id)
+            "MultiCounter" -> {/* TODO */}
+        }
+    }
+
+    private fun simpleCounterEventHandler(buttonId: String) {
         when (buttonId) {
             "incrementButton" -> updateLiveValue(1)
             "decrementButton" -> updateLiveValue(-1)

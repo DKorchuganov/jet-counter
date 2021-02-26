@@ -11,12 +11,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.LiveData
+import com.jvmlab.android.jetcounter.ButtonAddress
 
 
 @Composable
 fun SingleCounter(
     countStringLive: LiveData<String>,
-    buttonEventHandler: (String) -> Unit,
+    buttonEventHandler: (ButtonAddress) -> Unit,
+    screen: String,
+    group: Int = 0,
     name: String? = null
 ) {
     val countString: String by countStringLive.observeAsState("")
@@ -38,7 +41,7 @@ fun SingleCounter(
             ) {
                 Button(
                     onClick = {
-                        buttonEventHandler("decrementButton")
+                        buttonEventHandler(ButtonAddress(screen, "decrementButton", group))
                     }
                 ) {
                     Text(text = "-", fontSize = 48.sp)
@@ -46,7 +49,7 @@ fun SingleCounter(
                 Text(text = countString, fontSize = 60.sp)
                 Button(
                     onClick = {
-                        buttonEventHandler("incrementButton")
+                        buttonEventHandler(ButtonAddress(screen, "incrementButton", group))
                     }
                 ) {
                     Text(text = "+", fontSize = 48.sp)
