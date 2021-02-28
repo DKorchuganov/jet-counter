@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.jvmlab.android.jetcounter.composables.MainScreen
+import com.jvmlab.android.jetcounter.composables.MultiCounterScreen
 import com.jvmlab.android.jetcounter.composables.SimpleCounterScreen
 import com.jvmlab.android.jetcounter.ui.theme.JetCounterTheme
 
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
                 NavHost(navController, startDestination = "Main") {
                     composable("Main") { MainScreen(navController) }
                     composable("SimpleCounter") { SimpleCounterScreen(navController, model) }
+                    composable("MultiCounter") { MultiCounterScreen(navController, model) }
                 }
             }
         }

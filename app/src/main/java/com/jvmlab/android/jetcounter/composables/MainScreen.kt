@@ -19,15 +19,21 @@ fun MainScreen(navController: NavHostController) {
         title = "Jet Counter",
         iconOnClick = { /*TODO*/ },
         icon = Icons.Filled.Menu) {
-        OutlinedButton(
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
-            onClick = {
-                navController.navigate("SimpleCounter")
-            }
-        ) {
-            Text(text = "Simple Counter", fontSize = 24.sp)
+        CounterButton("Simple Counter", "SimpleCounter", navController)
+        CounterButton("Multi Counter", "MultiCounter", navController)
+    }
+}
+
+@Composable
+fun CounterButton(title: String, route: String, navController: NavHostController) {
+    OutlinedButton(
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxWidth(),
+        onClick = {
+            navController.navigate(route)
         }
+    ) {
+        Text(text = title, fontSize = 24.sp)
     }
 }
