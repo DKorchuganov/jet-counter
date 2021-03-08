@@ -12,9 +12,10 @@ class CounterViewModel : ViewModel() {
     val countStringLive: LiveData<String> = _countStringLive
 
     val counterNames = listOf("George", "Platon")
-    val multiCounter = ListCounter(2)
-    val countStringLiveList =
+    private val multiCounter = ListCounter(2)
+    private val _countStringLiveList =
         listOf(MutableLiveData("0"), MutableLiveData("0"))
+    val countStringLiveList: List<LiveData<String>> = _countStringLiveList
 
     fun buttonEventHandler(buttonAddress: ButtonAddress) {
         when (buttonAddress.screen) {
@@ -34,13 +35,13 @@ class CounterViewModel : ViewModel() {
         _countStringLive.value = counter.increment(inc).toString()
     }
 
-    fun multiCounterEventHandler(buttonAddress: ButtonAddress) {
+    private fun multiCounterEventHandler(buttonAddress: ButtonAddress) {
         when (buttonAddress.id) {
             "incrementButton" ->
-                countStringLiveList[buttonAddress.group].value =
+                _countStringLiveList[buttonAddress.group].value =
                     multiCounter.increment(1, buttonAddress.group).toString()
             "decrementButton" ->
-                countStringLiveList[buttonAddress.group].value =
+                _countStringLiveList[buttonAddress.group].value =
                     multiCounter.increment(-1, buttonAddress.group).toString()
         }
 
