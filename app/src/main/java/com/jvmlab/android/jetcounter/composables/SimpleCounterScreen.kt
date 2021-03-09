@@ -23,7 +23,7 @@ fun SimpleCounterScreen(navController: NavHostController, model: CounterViewMode
             verticalArrangement = Arrangement.Center
         ) {
             SingleCounter(
-                countStringLive = model.countStringLive,
+                countStringLive = model.simpleCounterModel.countStringLive,
                 buttonEventHandler = model::buttonEventHandler,
                 buttonGroupAddress = ButtonGroupAddress("SimpleCounter")
             )
