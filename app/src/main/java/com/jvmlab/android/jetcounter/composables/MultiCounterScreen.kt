@@ -14,10 +14,10 @@ fun MultiCounterScreen(navController: NavHostController, model: CounterViewModel
         iconOnClick = { navController.popBackStack() },
         icon = Icons.Filled.ArrowBack) {
         SingleCounterList(
-            countStringLiveList = model.countStringLiveList,
+            countStringLiveList = model.multiCounterModel.countStringLiveList,
             buttonEventHandler = model::buttonEventHandler,
             screen = "MultiCounter",
-            counterNames = model.counterNames
+            counterNames = model.multiCounterModel.counterNames
         )
     }
 }
