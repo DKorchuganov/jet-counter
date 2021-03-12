@@ -1,7 +1,10 @@
 package com.jvmlab.android.jetcounter.composables
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.LiveData
 import com.jvmlab.android.jetcounter.ButtonAddress
 import com.jvmlab.android.jetcounter.ButtonGroupAddress
@@ -14,7 +17,7 @@ fun SingleCounterList(
     screen: String,
     counterNames: List<String>
 ) {
-    Column {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         for (index in 0..counterNames.lastIndex) {
             SingleCounter(
                 countStringLive = countStringLiveList[index],
