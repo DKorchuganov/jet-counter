@@ -11,7 +11,7 @@ class MultiCounterModel(val counterNames: List<String>) {
         listOf(MutableLiveData("0"), MutableLiveData("0"))
     val countStringLiveList: List<LiveData<String>> = _countStringLiveList
 
-    fun multiCounterEventHandler(buttonAddress: ButtonAddress) {
+    fun buttonEventHandler(buttonAddress: ButtonAddress) {
         when (buttonAddress.id) {
             "incrementButton" ->
                 _countStringLiveList[buttonAddress.group].value =
