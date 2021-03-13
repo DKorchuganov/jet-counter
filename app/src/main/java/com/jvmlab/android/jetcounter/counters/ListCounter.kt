@@ -1,10 +1,10 @@
 package com.jvmlab.android.jetcounter.counters
 
-class ListCounter(size: Int) {
-     private val counterList: List<SingleCounter> =
-         MutableList(size) {
-             SingleCounter()
+class ListCounter(names: List<String>) {
+     private val counters: List<SingleCounter> =
+         names.map {
+             SingleCounter(it)
          }
 
-    fun increment(inc: Int, index: Int): Int = counterList[index].increment(inc)
+    fun increment(inc: Int, index: Int): Int = counters[index].increment(inc)
 }

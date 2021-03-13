@@ -15,7 +15,7 @@ import com.jvmlab.android.jetcounter.CounterViewModel
 @Composable
 fun SimpleCounterScreen(navController: NavHostController, model: CounterViewModel) {
     AppScreen(
-        title = "Simple Counter",
+        title = model.simpleCounterModel.name,
         iconOnClick = { navController.popBackStack() },
         icon = Icons.Filled.ArrowBack) {
         Column(

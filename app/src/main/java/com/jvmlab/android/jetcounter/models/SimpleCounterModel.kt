@@ -6,8 +6,10 @@ import com.jvmlab.android.jetcounter.ButtonAddress
 import com.jvmlab.android.jetcounter.counters.SingleCounter
 
 
-class SimpleCounterModel {
-    private val counter = SingleCounter()
+class SimpleCounterModel(counterName: String) {
+    private val counter = SingleCounter(counterName)
+    val name: String
+        get() = counter.name
     private val _countStringLive = MutableLiveData("0")
     val countStringLive: LiveData<String> = _countStringLive
 
