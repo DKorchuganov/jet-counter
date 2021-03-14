@@ -5,10 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import com.jvmlab.android.jetcounter.ButtonAddress
 import com.jvmlab.android.jetcounter.counters.ListCounter
 
-class MultiCounterModel(counterNames: List<String>) {
-    private val multiCounter = ListCounter(counterNames)
+class MultiCounterModel(counterName: String, counterNames: List<String>) {
+    private val multiCounter = ListCounter(counterNames, counterName)
     val names: List<String>
         get() = multiCounter.names
+    val title: String
+        get() = multiCounter.name
     private val _countStringLiveList =
         listOf(MutableLiveData("0"), MutableLiveData("0"))
     val countStringLiveList: List<LiveData<String>> = _countStringLiveList

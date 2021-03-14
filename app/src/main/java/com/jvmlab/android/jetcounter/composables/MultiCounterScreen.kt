@@ -10,7 +10,7 @@ import com.jvmlab.android.jetcounter.CounterViewModel
 @Composable
 fun MultiCounterScreen(navController: NavHostController, model: CounterViewModel) {
     AppScreen(
-        title = "Multi Counter",
+        title = model.multiCounterModel.title,
         iconOnClick = { navController.popBackStack() },
         icon = Icons.Filled.ArrowBack) {
         SingleCounterList(

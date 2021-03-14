@@ -8,7 +8,7 @@ import com.jvmlab.android.jetcounter.counters.SingleCounter
 
 class SimpleCounterModel(counterName: String) {
     private val counter = SingleCounter(counterName)
-    val name: String
+    val title: String
         get() = counter.name
     private val _countStringLive = MutableLiveData("0")
     val countStringLive: LiveData<String> = _countStringLive
