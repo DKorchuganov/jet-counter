@@ -15,11 +15,11 @@ import androidx.navigation.compose.navigate
 
 @Composable
 fun MainScreen(navController: NavHostController) {
-    AppScreen(
+    AppScreenTemplate(
         title = "Jet Counter",
         iconOnClick = { /*TODO*/ },
         icon = Icons.Filled.Menu) {
-        CounterButton("Simple Counter", "SimpleCounter", navController)
+        CounterButton("Simple Counter", "SimpleCounterList", navController)
         CounterButton("Multi Counter", "MultiCounter", navController)
     }
 }

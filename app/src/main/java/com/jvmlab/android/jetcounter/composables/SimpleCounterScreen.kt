@@ -13,18 +13,18 @@ import com.jvmlab.android.jetcounter.CounterViewModel
 
 
 @Composable
-fun SimpleCounterScreen(navController: NavHostController, model: CounterViewModel) {
-    AppScreen(
-        title = model.simpleCounterModel.title,
-        iconOnClick = { navController.popBackStack() },
-        icon = Icons.Filled.ArrowBack) {
+fun SimpleCounterScreen(navController: NavHostController, model: CounterViewModel, idx: Int) {
+    AppScreenTemplate(
+        title = model.simpleCounterModelList[idx].title,
+        iconOnClick = { navController.popBackStack() }
+    ) {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center
         ) {
             SingleCounter(
-                countStringLive = model.simpleCounterModel.countStringLive,
-                buttonEventHandler = model.simpleCounterModel::buttonEventHandler,
+                countStringLive = model.simpleCounterModelList[idx].countStringLive,
+                buttonEventHandler = model.simpleCounterModelList[idx]::buttonEventHandler,
                 buttonGroupAddress = ButtonGroupAddress("SimpleCounter")
             )
         }
