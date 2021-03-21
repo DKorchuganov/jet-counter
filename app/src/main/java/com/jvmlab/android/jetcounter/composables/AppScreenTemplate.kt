@@ -1,6 +1,6 @@
 package com.jvmlab.android.jetcounter.composables
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -13,19 +13,23 @@ fun AppScreenTemplate(
     title: String,
     iconOnClick: () -> Unit,
     icon: ImageVector = Icons.Filled.ArrowBack,
-    content: @Composable () -> Unit
+    floatingActionButton: @Composable () -> Unit = {},
+    content: @Composable (PaddingValues) -> Unit
 ) {
     Surface(color = MaterialTheme.colors.background) {
-        Column {
-            TopAppBar(
-                title = { Text(title) },
-                navigationIcon = {
-                    IconButton(onClick = iconOnClick) {
-                        Icon(icon, null)
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(title) },
+                    navigationIcon = {
+                        IconButton(onClick = iconOnClick) {
+                            Icon(icon, null)
+                        }
                     }
-                }
-            )
-            content()
-        }
+                )
+            },
+            floatingActionButton = floatingActionButton,
+            content = content
+        )
     }
 }

@@ -1,7 +1,10 @@
 package com.jvmlab.android.jetcounter.composables
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -19,8 +22,10 @@ fun MainScreen(navController: NavHostController) {
         title = "Jet Counter",
         iconOnClick = { /*TODO*/ },
         icon = Icons.Filled.Menu) {
-        CounterButton("Simple Counter", "SimpleCounterList", navController)
-        CounterButton("Multi Counter", "MultiCounter", navController)
+        Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+            CounterButton("Simple Counter", "SimpleCounterList", navController)
+            CounterButton("Multi Counter", "MultiCounter", navController)
+        }
     }
 }
 
