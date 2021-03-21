@@ -16,7 +16,7 @@ fun SimpleCounterListScreen(navController: NavHostController, model: CounterView
         title = "Simple Counters",
         iconOnClick = { navController.popBackStack() },
         floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO*/ }) {
+            FloatingActionButton(onClick = {  navController.navigate("SimpleCounterSetup") }) {
                 Icon(Icons.Default.Add, null)
             }
         }

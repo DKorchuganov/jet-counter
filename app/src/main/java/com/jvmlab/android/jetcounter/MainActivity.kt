@@ -9,10 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
-import com.jvmlab.android.jetcounter.composables.MainScreen
-import com.jvmlab.android.jetcounter.composables.MultiCounterScreen
-import com.jvmlab.android.jetcounter.composables.SimpleCounterListScreen
-import com.jvmlab.android.jetcounter.composables.SimpleCounterScreen
+import com.jvmlab.android.jetcounter.composables.*
 import com.jvmlab.android.jetcounter.ui.theme.JetCounterTheme
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +29,10 @@ class MainActivity : AppCompatActivity() {
 
                     composable(route = "SimpleCounterList") {
                         SimpleCounterListScreen(navController, model)
+                    }
+
+                    composable(route = "SimpleCounterSetup") {
+                        SimpleCounterSetupScreen(navController, model)
                     }
 
                     composable(
