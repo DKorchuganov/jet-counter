@@ -21,7 +21,7 @@ fun SimpleCounterListScreen(navController: NavHostController, model: CounterView
             }
         }
     ) {
-        SimpleCounterList(model.simpleCounterModelList) {
+        SimpleCounterList(model.simpleCounterSetupModel.counterModelList) {
             navController.navigate("SimpleCounter/$it")
         }
     }

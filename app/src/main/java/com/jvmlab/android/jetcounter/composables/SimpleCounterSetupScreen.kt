@@ -11,7 +11,7 @@ fun SimpleCounterSetupScreen(navController: NavHostController, model: CounterVie
         title = model.simpleCounterSetupModel.title,
         iconOnClick = { navController.popBackStack() }
     ) {
-
+        SimpleCounterSetup(model.simpleCounterSetupModel, navController::popBackStack )
     }
 }
 
