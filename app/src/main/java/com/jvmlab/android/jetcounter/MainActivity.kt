@@ -43,8 +43,20 @@ class MainActivity : AppCompatActivity() {
                         SimpleCounterScreen(navController, model, idx)
                     }
 
-                    composable(route = "MultiCounter") {
-                        MultiCounterScreen(navController, model)
+                    composable(route = "MultiCounterList") {
+                        MultiCounterListScreen(navController, model)
+                    }
+
+                    composable(route = "MultiCounterSetup") {
+                        MultiCounterSetupScreen(navController, model)
+                    }
+
+                    composable(
+                        route = "MultiCounter/{idx}",
+                        arguments = listOf(navArgument("idx") { type = NavType.IntType })
+                    ) {
+                        val idx = it.arguments?.getInt("idx") ?: 0
+                        MultiCounterScreen(navController, model, idx)
                     }
                 }
             }

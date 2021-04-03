@@ -24,7 +24,7 @@ fun MainScreen(navController: NavHostController) {
         icon = Icons.Filled.Menu) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
             CounterButton("Simple Counter", "SimpleCounterList", navController)
-            CounterButton("Multi Counter", "MultiCounter", navController)
+            CounterButton("Multi Counter", "MultiCounterList", navController)
         }
     }
 }

@@ -6,16 +6,18 @@ import com.jvmlab.android.jetcounter.CounterViewModel
 
 
 @Composable
-fun MultiCounterScreen(navController: NavHostController, model: CounterViewModel) {
+fun MultiCounterScreen(navController: NavHostController, model: CounterViewModel, idx: Int) {
+    val counterModelList = model.multiCounterSetupModel.counterModelList
+
     AppScreenTemplate(
-        title = model.multiCounterModel.title,
+        title = counterModelList[idx].title,
         iconOnClick = { navController.popBackStack() }
     ) {
         SingleCounterList(
-            countStringLiveList = model.multiCounterModel.countStringLiveList,
-            buttonEventHandler = model.multiCounterModel::buttonEventHandler,
+            countStringLiveList = counterModelList[idx].countStringLiveList,
+            buttonEventHandler = counterModelList[idx]::buttonEventHandler,
             screen = "MultiCounter",
-            counterNames = model.multiCounterModel.names
+            counterNames = counterModelList[idx].names
         )
     }
 }
