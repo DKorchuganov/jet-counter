@@ -9,6 +9,5 @@ import com.jvmlab.android.jetcounter.models.SimpleCounterSetupModel
 class CounterViewModel : ViewModel() {
     val simpleCounterSetupModel = SimpleCounterSetupModel()
 
-    val multiCounterModel = MultiCounterModel("Chess", listOf("George", "Platon"))
     val multiCounterSetupModel = MultiCounterSetupModel()
 }

@@ -13,12 +13,11 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.jvmlab.android.jetcounter.models.MultiCounterSetupModel
-import com.jvmlab.android.jetcounter.models.SimpleCounterSetupModel
 
 
 @Composable
 fun MultiCounterSetup(model: MultiCounterSetupModel, navigateToCounter: () -> Unit) {
-    val counterName: String by model.counterNameLive.observeAsState("")
+    val counterTitle: String by model.counterTitleLive.observeAsState("")
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -26,9 +25,9 @@ fun MultiCounterSetup(model: MultiCounterSetupModel, navigateToCounter: () -> Un
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         OutlinedTextField(
-            value = counterName,
+            value = counterTitle,
             onValueChange = { model.textFieldEventHandler(it) },
-            label = { Text("Counter name") }
+            label = { Text("Counter title") }
         )
         Button(
             onClick = {

@@ -7,23 +7,23 @@ import androidx.lifecycle.MutableLiveData
 class MultiCounterSetupModel {
     val title = "Set up your counter"
 
-    private val _counterNameLive = MutableLiveData("")
-    val counterNameLive: LiveData<String> = _counterNameLive
+    private val _counterTitleLive = MutableLiveData("")
+    val counterTitleLive: LiveData<String> = _counterTitleLive
 
     private val _counterModelList = mutableListOf<MultiCounterModel>()
     val counterModelList: List<MultiCounterModel> = _counterModelList
 
     fun textFieldEventHandler(text: String) {
-        _counterNameLive.value = text
+        _counterTitleLive.value = text
     }
 
     fun buttonEventHandler() {
         _counterModelList.add(
             MultiCounterModel(
-                _counterNameLive.value ?: "",
+                _counterTitleLive.value ?: "",
                 listOf("George", "Platon")
             )
         )
-        _counterNameLive.value = ""
+        _counterTitleLive.value = ""
     }
 }

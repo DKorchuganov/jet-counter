@@ -17,7 +17,7 @@ import com.jvmlab.android.jetcounter.models.SimpleCounterSetupModel
 
 @Composable
 fun SimpleCounterSetup(model: SimpleCounterSetupModel, navigateToCounter: () -> Unit) {
-    val counterName: String by model.counterNameLive.observeAsState("")
+    val counterTitle: String by model.counterTitleLive.observeAsState("")
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -25,9 +25,9 @@ fun SimpleCounterSetup(model: SimpleCounterSetupModel, navigateToCounter: () -> 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         OutlinedTextField(
-            value = counterName,
+            value = counterTitle,
             onValueChange = { model.textFieldEventHandler(it) },
-            label = { Text("Counter name") }
+            label = { Text("Counter title") }
         )
         Button(
             onClick = {
