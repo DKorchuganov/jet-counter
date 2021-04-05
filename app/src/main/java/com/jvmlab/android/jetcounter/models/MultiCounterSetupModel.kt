@@ -17,6 +17,10 @@ class MultiCounterSetupModel {
         mutableListOf(MutableLiveData(""))
     val counterNameLiveList: List<LiveData<String>> = _counterNameLiveList
 
+    private val _numberOfCountersLive = MutableLiveData(counterNameLiveList.size)
+    val numberOfCountersLive: LiveData<Int> = _numberOfCountersLive
+
+
     fun onCounterTitleChange(text: String) {
         _counterTitleLive.value = text
     }
@@ -27,6 +31,7 @@ class MultiCounterSetupModel {
 
     fun onCounterNameAdd() {
         _counterNameLiveList.add(MutableLiveData(""))
+        _numberOfCountersLive.value = _counterNameLiveList.size
     }
 
     fun onDone() {

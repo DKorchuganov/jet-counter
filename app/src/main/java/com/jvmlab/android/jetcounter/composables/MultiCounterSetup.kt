@@ -18,6 +18,7 @@ import com.jvmlab.android.jetcounter.models.MultiCounterSetupModel
 @Composable
 fun MultiCounterSetup(model: MultiCounterSetupModel, navigateToCounter: () -> Unit) {
     val counterTitle: String by model.counterTitleLive.observeAsState("")
+    val numberOfCounters: Int by model.numberOfCountersLive.observeAsState(1)
 
     Column(
         modifier = Modifier
@@ -36,7 +37,7 @@ fun MultiCounterSetup(model: MultiCounterSetupModel, navigateToCounter: () -> Un
             )
             Divider(modifier = Modifier.padding(bottom = 16.dp))
 
-            for (idx in 0..model.counterNameLiveList.lastIndex) {
+            for (idx in 0 until numberOfCounters) {
                 OutlinedTextField(
                     modifier = Modifier
                         .padding(bottom = 16.dp)
