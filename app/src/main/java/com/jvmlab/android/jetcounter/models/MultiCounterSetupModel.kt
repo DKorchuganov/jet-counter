@@ -13,15 +13,29 @@ class MultiCounterSetupModel {
     private val _counterModelList = mutableListOf<MultiCounterModel>()
     val counterModelList: List<MultiCounterModel> = _counterModelList
 
-    fun textFieldEventHandler(text: String) {
+    private val _counterNameLiveList =
+        mutableListOf(MutableLiveData(""))
+    val counterNameLiveList: List<LiveData<String>> = _counterNameLiveList
+
+    fun onCounterTitleChange(text: String) {
         _counterTitleLive.value = text
     }
 
-    fun buttonEventHandler() {
+    fun onCounterNameChange(text: String, index: Int) {
+        _counterNameLiveList[index].value = text
+    }
+
+    fun onCounterNameAdd() {
+        _counterNameLiveList.add(MutableLiveData(""))
+    }
+
+    fun onDone() {
         _counterModelList.add(
             MultiCounterModel(
-                _counterTitleLive.value ?: "",
-                listOf("George", "Platon")
+                counterTitleLive.value ?: "",
+                counterNameLiveList.map {
+                    it.value ?: ""
+                }
             )
         )
         _counterTitleLive.value = ""

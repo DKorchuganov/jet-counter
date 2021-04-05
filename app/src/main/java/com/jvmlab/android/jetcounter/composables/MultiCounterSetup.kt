@@ -1,12 +1,11 @@
 package com.jvmlab.android.jetcounter.composables
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -26,21 +25,46 @@ fun MultiCounterSetup(model: MultiCounterSetupModel, navigateToCounter: () -> Un
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        OutlinedTextField(
-            modifier = Modifier.padding(8.dp),
-            value = counterTitle,
-            onValueChange = { model.textFieldEventHandler(it) },
-            label = { Text("Counter title") }
-        )
-        Divider()
-        Button(
-            modifier = Modifier.padding(8.dp),
-            onClick = {
-                model.buttonEventHandler()
-                navigateToCounter()
+        Column(modifier = Modifier.padding(16.dp)) {
+            OutlinedTextField(
+                modifier = Modifier
+                    .padding(bottom = 16.dp)
+                    .fillMaxWidth(),
+                value = counterTitle,
+                onValueChange = { model.onCounterTitleChange(it) },
+                label = { Text("Counter title") }
+            )
+            Divider(modifier = Modifier.padding(bottom = 16.dp))
+
+            for (idx in 0..model.counterNameLiveList.lastIndex) {
+                OutlinedTextField(
+                    modifier = Modifier
+                        .padding(bottom = 16.dp)
+                        .fillMaxWidth(),
+                    value = model.counterNameLiveList[idx].observeAsState("").value,
+                    onValueChange = { model.onCounterNameChange(it, idx) },
+                    label = { Text("Counter name") }
+                )
             }
-        ) {
-            Text("Create", style = MaterialTheme.typography.h5)
+
+            IconButton(
+                modifier = Modifier
+                    .padding(bottom = 16.dp)
+                    .align(Alignment.End),
+                onClick = { model.onCounterNameAdd() }
+            ) {
+                Icon(Icons.Default.AddBox, null)
+            }
+
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {
+                    model.onDone()
+                    navigateToCounter()
+                }
+            ) {
+                Text("Done", style = MaterialTheme.typography.h5)
+            }
         }
     }
 }

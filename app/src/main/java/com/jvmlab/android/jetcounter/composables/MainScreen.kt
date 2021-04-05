@@ -23,8 +23,10 @@ fun MainScreen(navController: NavHostController) {
         iconOnClick = { /*TODO*/ },
         icon = Icons.Filled.Menu) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-            CounterButton("Simple Counter", "SimpleCounterList", navController)
-            CounterButton("Multi Counter", "MultiCounterList", navController)
+            Column(modifier = Modifier.padding(16.dp)) {
+                CounterButton("Simple Counter", "SimpleCounterList", navController)
+                CounterButton("Multi Counter", "MultiCounterList", navController)
+            }
         }
     }
 }
@@ -33,7 +35,7 @@ fun MainScreen(navController: NavHostController) {
 fun CounterButton(title: String, route: String, navController: NavHostController) {
     OutlinedButton(
         modifier = Modifier
-            .padding(16.dp)
+            .padding(bottom = 16.dp)
             .fillMaxWidth(),
         onClick = {
             navController.navigate(route)
