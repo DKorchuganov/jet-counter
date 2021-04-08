@@ -53,7 +53,8 @@ fun MultiCounterSetup(model: MultiCounterSetupModel, navigateToCounter: () -> Un
                         label = { Text("Counter name") }
                     )
                     IconButton(
-                        onClick = { model.onCounterNameDelete(idx) }
+                        onClick = { model.onCounterNameDelete(idx) },
+                        enabled = (numberOfCounters > 1)
                     ) {
                         Icon(Icons.Outlined.Delete, null, modifier = Modifier.size(48.dp) )
                     }

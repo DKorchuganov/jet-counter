@@ -35,8 +35,10 @@ class MultiCounterSetupModel {
     }
 
     fun onCounterNameDelete(index: Int) {
-        _counterNameLiveList.removeAt(index)
-        _numberOfCountersLive.value = _counterNameLiveList.size
+        if (_counterNameLiveList.size > 1) {
+            _counterNameLiveList.removeAt(index)
+            _numberOfCountersLive.value = _counterNameLiveList.size
+        }
     }
 
     fun onDone() {
