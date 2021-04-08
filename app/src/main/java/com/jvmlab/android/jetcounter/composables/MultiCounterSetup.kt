@@ -6,6 +6,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddBox
+import androidx.compose.material.icons.outlined.AddBox
+import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -38,14 +40,24 @@ fun MultiCounterSetup(model: MultiCounterSetupModel, navigateToCounter: () -> Un
             Divider(modifier = Modifier.padding(bottom = 16.dp))
 
             for (idx in 0 until numberOfCounters) {
-                OutlinedTextField(
+                Row(
                     modifier = Modifier
                         .padding(bottom = 16.dp)
                         .fillMaxWidth(),
-                    value = model.counterNameLiveList[idx].observeAsState("").value,
-                    onValueChange = { model.onCounterNameChange(it, idx) },
-                    label = { Text("Counter name") }
-                )
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    OutlinedTextField(
+                        value = model.counterNameLiveList[idx].observeAsState("").value,
+                        onValueChange = { model.onCounterNameChange(it, idx) },
+                        label = { Text("Counter name") }
+                    )
+                    IconButton(
+                        onClick = { model.onCounterNameDelete(idx) }
+                    ) {
+                        Icon(Icons.Outlined.Delete, null, modifier = Modifier.size(48.dp) )
+                    }
+                }
             }
 
             IconButton(
@@ -54,7 +66,7 @@ fun MultiCounterSetup(model: MultiCounterSetupModel, navigateToCounter: () -> Un
                     .align(Alignment.End),
                 onClick = { model.onCounterNameAdd() }
             ) {
-                Icon(Icons.Default.AddBox, null)
+                Icon(Icons.Outlined.AddBox, null, modifier = Modifier.size(48.dp) )
             }
 
             Button(

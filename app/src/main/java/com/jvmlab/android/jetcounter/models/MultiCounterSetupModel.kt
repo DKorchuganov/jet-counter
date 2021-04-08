@@ -34,6 +34,11 @@ class MultiCounterSetupModel {
         _numberOfCountersLive.value = _counterNameLiveList.size
     }
 
+    fun onCounterNameDelete(index: Int) {
+        _counterNameLiveList.removeAt(index)
+        _numberOfCountersLive.value = _counterNameLiveList.size
+    }
+
     fun onDone() {
         _counterModelList.add(
             MultiCounterModel(
