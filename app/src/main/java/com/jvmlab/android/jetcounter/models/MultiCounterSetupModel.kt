@@ -51,5 +51,7 @@ class MultiCounterSetupModel {
             )
         )
         _counterTitleLive.value = ""
+        _counterNameLiveList.clear()
+        onCounterNameAdd()
     }
 }

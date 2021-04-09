@@ -20,7 +20,7 @@ import com.jvmlab.android.jetcounter.models.MultiCounterSetupModel
 @Composable
 fun MultiCounterSetup(model: MultiCounterSetupModel, navigateToCounter: () -> Unit) {
     val counterTitle: String by model.counterTitleLive.observeAsState("")
-    val numberOfCounters: Int by model.numberOfCountersLive.observeAsState(1)
+    val numberOfCounters: Int by model.numberOfCountersLive.observeAsState(0)
 
     Column(
         modifier = Modifier
