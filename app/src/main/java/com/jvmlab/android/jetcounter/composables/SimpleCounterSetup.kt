@@ -11,10 +11,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import com.jvmlab.android.jetcounter.models.SimpleCounterSetupModel
 
 
+@ExperimentalComposeUiApi
 @Composable
 fun SimpleCounterSetup(model: SimpleCounterSetupModel, navigateToCounter: () -> Unit) {
     val counterTitle: String by model.counterTitleLive.observeAsState("")
@@ -24,10 +26,10 @@ fun SimpleCounterSetup(model: SimpleCounterSetupModel, navigateToCounter: () -> 
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        OutlinedTextField(
+        SingleTextField(
             value = counterTitle,
             onValueChange = { model.textFieldEventHandler(it) },
-            label = { Text("Counter title") }
+            labelText = "Counter title"
         )
         Button(
             onClick = {
