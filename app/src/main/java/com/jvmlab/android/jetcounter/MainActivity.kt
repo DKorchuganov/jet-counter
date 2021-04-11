@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,6 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import com.jvmlab.android.jetcounter.composables.*
 import com.jvmlab.android.jetcounter.ui.theme.JetCounterTheme
 
+@ExperimentalComposeUiApi
 class MainActivity : AppCompatActivity() {
     private val model: CounterViewModel by viewModels()
 

@@ -13,11 +13,11 @@ class SimpleCounterSetupModel {
     private val _counterModelList = mutableListOf<SimpleCounterModel>()
     val counterModelList: List<SimpleCounterModel> = _counterModelList
 
-    fun textFieldEventHandler(text: String) {
+    fun onCounterTitleChange(text: String) {
         _counterTitleLive.value = text
     }
 
-    fun buttonEventHandler() {
+    fun onDone() {
         _counterModelList.add(SimpleCounterModel(_counterTitleLive.value ?: ""))
         _counterTitleLive.value = ""
     }
