@@ -4,20 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 
-class SimpleCounterSetupModel {
-    val title = "Set up your counter"
-
-    private val _counterTitleLive = MutableLiveData("")
-    val counterTitleLive: LiveData<String> = _counterTitleLive
+class SimpleCounterSetupModel : AbstractCounterSetupModel() {
 
     private val _counterModelList = mutableListOf<SimpleCounterModel>()
     val counterModelList: List<SimpleCounterModel> = _counterModelList
 
-    fun onCounterTitleChange(text: String) {
-        _counterTitleLive.value = text
-    }
-
-    fun onDone() {
+    override fun onDone() {
         _counterModelList.add(SimpleCounterModel(_counterTitleLive.value ?: ""))
         _counterTitleLive.value = ""
     }
