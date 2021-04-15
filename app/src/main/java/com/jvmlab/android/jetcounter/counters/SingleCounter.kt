@@ -1,6 +1,6 @@
 package com.jvmlab.android.jetcounter.counters
 
-class SingleCounter(val name: String) {
+class SingleCounter(name: String) : BasicCounter(name) {
     private var count = 0
 
     fun increment(inc: Int): Int {
