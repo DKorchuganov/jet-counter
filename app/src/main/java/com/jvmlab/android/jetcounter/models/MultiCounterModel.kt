@@ -2,33 +2,28 @@ package com.jvmlab.android.jetcounter.models
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.jvmlab.android.jetcounter.ButtonAddress
 import com.jvmlab.android.jetcounter.counters.ListCounter
 
+
 class MultiCounterModel(counterName: String, counterNames: List<String>) {
-    private val multiCounter = ListCounter(counterNames, counterName)
+    private val counter = ListCounter(counterNames, counterName)
 
     val names: List<String>
-        get() = multiCounter.names
+        get() = counter.names
 
     val title: String
-        get() = multiCounter.name
+        get() = counter.name
 
     private val _countStringLiveList = List(names.size) {
         MutableLiveData("0")
     }
     val countStringLiveList: List<LiveData<String>> = _countStringLiveList
 
-    fun buttonEventHandler(buttonAddress: ButtonAddress) {
-        when (buttonAddress.id) {
-            "incrementButton" ->
-                _countStringLiveList[buttonAddress.group].value =
-                    multiCounter.increment(1, buttonAddress.group).toString()
-            "decrementButton" ->
-                _countStringLiveList[buttonAddress.group].value =
-                    multiCounter.increment(-1, buttonAddress.group).toString()
-        }
+    fun onIncrement(index: Int) = updateLiveValue(1, index)
 
+    fun onDecrement(index: Int) = updateLiveValue(-1, index)
+
+    private fun updateLiveValue(inc: Int, index: Int) {
+        _countStringLiveList[index].value = counter.increment(inc, index).toString()
     }
-
 }

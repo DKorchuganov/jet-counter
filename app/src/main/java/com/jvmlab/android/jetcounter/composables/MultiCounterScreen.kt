@@ -15,8 +15,8 @@ fun MultiCounterScreen(navController: NavHostController, model: CounterViewModel
     ) {
         SingleCounterList(
             countStringLiveList = counterModelList[idx].countStringLiveList,
-            buttonEventHandler = counterModelList[idx]::buttonEventHandler,
-            screen = "MultiCounter",
+            onIncrement = counterModelList[idx]::onIncrement,
+            onDecrement = counterModelList[idx]::onDecrement,
             counterNames = counterModelList[idx].names
         )
     }

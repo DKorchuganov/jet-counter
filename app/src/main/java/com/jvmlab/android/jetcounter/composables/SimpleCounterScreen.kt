@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import com.jvmlab.android.jetcounter.ButtonGroupAddress
 import com.jvmlab.android.jetcounter.CounterViewModel
 
 
@@ -24,9 +23,9 @@ fun SimpleCounterScreen(navController: NavHostController, model: CounterViewMode
         ) {
             SingleCounter(
                 countStringLive = counterModelList[idx].countStringLive,
-                buttonEventHandler = counterModelList[idx]::buttonEventHandler,
-                buttonGroupAddress = ButtonGroupAddress("SimpleCounter")
-            )
+                onIncrement = counterModelList[idx]::onIncrement,
+                onDecrement = counterModelList[idx]::onDecrement,
+                )
         }
     }
 }

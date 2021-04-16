@@ -6,23 +6,21 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.LiveData
-import com.jvmlab.android.jetcounter.ButtonAddress
-import com.jvmlab.android.jetcounter.ButtonGroupAddress
 
 
 @Composable
 fun SingleCounterList(
     countStringLiveList: List<LiveData<String>>,
-    buttonEventHandler: (ButtonAddress) -> Unit,
-    screen: String,
+    onIncrement: (Int) -> Unit,
+    onDecrement: (Int) -> Unit,
     counterNames: List<String>
 ) {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         for (index in 0..counterNames.lastIndex) {
             SingleCounter(
                 countStringLive = countStringLiveList[index],
-                buttonEventHandler = buttonEventHandler,
-                buttonGroupAddress = ButtonGroupAddress(screen, index),
+                onIncrement = { onIncrement(index) },
+                onDecrement = { onDecrement(index) },
                 name = counterNames[index]
             )
         }
