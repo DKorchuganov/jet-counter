@@ -10,22 +10,32 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
+import com.jvmlab.android.jetcounter.R
 
 
 @Composable
 fun MainScreen(navController: NavHostController) {
     AppScreenTemplate(
-        title = "Jet Counter",
+        title = stringResource(R.string.app_name),
         iconOnClick = { /*TODO*/ },
         icon = Icons.Filled.Menu) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
             Column(modifier = Modifier.padding(16.dp)) {
-                CounterButton("Simple Counter", "SimpleCounterList", navController)
-                CounterButton("Multi Counter", "MultiCounterList", navController)
+                CounterButton(
+                    stringResource(R.string.simple_counter),
+                    "SimpleCounterList",
+                    navController
+                )
+                CounterButton(
+                    stringResource(R.string.multi_counter),
+                    "MultiCounterList",
+                    navController
+                )
             }
         }
     }

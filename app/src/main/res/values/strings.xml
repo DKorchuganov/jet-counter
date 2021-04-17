@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Jet Counter</string>
+    <string name="app_name" translatable="false">Jet Counter</string>
+    <string name="simple_counter">Simple Counter</string>
+    <string name="multi_counter">Multi Counter</string>
 </resources>
