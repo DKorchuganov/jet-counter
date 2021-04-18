@@ -2,4 +2,6 @@
     <string name="app_name" translatable="false">Jet Counter</string>
     <string name="simple_counter">Simple Counter</string>
     <string name="multi_counter">Multi Counter</string>
+    <string name="simple_counters">Simple Counters</string>
+    <string name="multi_counters">Multi Counters</string>
 </resources>

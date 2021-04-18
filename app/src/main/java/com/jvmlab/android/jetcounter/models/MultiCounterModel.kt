@@ -5,14 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import com.jvmlab.android.jetcounter.counters.ListCounter
 
 
-class MultiCounterModel(counterName: String, counterNames: List<String>) {
-    private val counter = ListCounter(counterNames, counterName)
+class MultiCounterModel(
+    counterName: String,
+    counterNames: List<String>
+) : AbstractCounterModel<ListCounter>() {
+    override val counter = ListCounter(counterNames, counterName)
 
     val names: List<String>
         get() = counter.names
-
-    val title: String
-        get() = counter.name
 
     private val _countStringLiveList = List(names.size) {
         MutableLiveData("0")
