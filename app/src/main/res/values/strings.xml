@@ -4,4 +4,5 @@
     <string name="multi_counter">Multi Counter</string>
     <string name="simple_counters">Simple Counters</string>
     <string name="multi_counters">Multi Counters</string>
+    <string name="counter_setup_title">Set up your counter</string>
 </resources>

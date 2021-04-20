@@ -2,6 +2,7 @@ package com.jvmlab.android.jetcounter.composables
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.jvmlab.android.jetcounter.CounterViewModel
 
@@ -10,7 +11,7 @@ import com.jvmlab.android.jetcounter.CounterViewModel
 @Composable
 fun MultiCounterSetupScreen(navController: NavHostController, model: CounterViewModel) {
     AppScreenTemplate(
-        title = model.multiCounterSetupModel.title,
+        title = stringResource(model.multiCounterSetupModel.titleKey),
         iconOnClick = { navController.popBackStack() }
     ) {
         MultiCounterSetup(model.multiCounterSetupModel, navController::popBackStack )

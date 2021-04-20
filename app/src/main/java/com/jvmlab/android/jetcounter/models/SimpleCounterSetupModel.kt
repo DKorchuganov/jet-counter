@@ -1,8 +1,5 @@
 package com.jvmlab.android.jetcounter.models
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-
 
 class SimpleCounterSetupModel : AbstractCounterSetupModel() {
 
