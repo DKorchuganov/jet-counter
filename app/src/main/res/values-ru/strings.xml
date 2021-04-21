@@ -5,4 +5,7 @@
     <string name="simple_counters">Простые счетчики</string>
     <string name="multi_counters">Составные счетчики</string>
     <string name="counter_setup_title">Настрой свой счетчик</string>
+    <string name="counter_title">Заголовок</string>
+    <string name="done_button">Готово</string>
+    <string name="counter_name">Счетчик</string>
 </resources>

@@ -15,7 +15,9 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.jvmlab.android.jetcounter.R
 import com.jvmlab.android.jetcounter.models.MultiCounterSetupModel
 
 
@@ -45,7 +47,7 @@ fun MultiCounterSetup(model: MultiCounterSetupModel, navigateToCounter: () -> Un
                         SingleTextField(
                             value = model.counterNameLiveList[idx].observeAsState("").value,
                             onValueChange = { model.onCounterNameChange(it, idx) },
-                            labelText = "Counter name"
+                            labelText = stringResource(R.string.counter_name)
                         )
                         IconButton(
                             onClick = { model.onCounterNameDelete(idx) },

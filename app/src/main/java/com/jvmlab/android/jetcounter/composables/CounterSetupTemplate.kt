@@ -10,7 +10,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.jvmlab.android.jetcounter.R
 import com.jvmlab.android.jetcounter.models.AbstractCounterSetupModel
 
 
@@ -29,7 +31,7 @@ fun CounterSetupTemplate(
             .fillMaxWidth(),
         value = counterTitle,
         onValueChange = { model.onCounterTitleChange(it) },
-        labelText = "Counter title"
+        labelText = stringResource(R.string.counter_title),
     )
 
     content()
@@ -41,6 +43,6 @@ fun CounterSetupTemplate(
             navigateToCounter()
         }
     ) {
-        Text("Done", style = MaterialTheme.typography.h5)
+        Text(stringResource(R.string.done_button), style = MaterialTheme.typography.h5)
     }
 }
