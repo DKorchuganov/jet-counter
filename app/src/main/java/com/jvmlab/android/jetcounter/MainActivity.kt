@@ -1,9 +1,9 @@
 package com.jvmlab.android.jetcounter
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.activity.compose.setContent
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -20,9 +20,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //val db = AppDatabase.getDB(applicationContext)
+
         setContent {
             JetCounterTheme {
                 val navController = rememberNavController()
+
                 NavHost(navController, startDestination = "Main") {
 
                     composable(route = "Main") {
