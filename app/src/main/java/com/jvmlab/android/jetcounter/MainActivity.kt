@@ -2,9 +2,9 @@ package com.jvmlab.android.jetcounter
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,7 +15,6 @@ import com.jvmlab.android.jetcounter.ui.theme.JetCounterTheme
 
 @ExperimentalComposeUiApi
 class MainActivity : AppCompatActivity() {
-    private val model: CounterViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +24,11 @@ class MainActivity : AppCompatActivity() {
         setContent {
             JetCounterTheme {
                 val navController = rememberNavController()
+                val model: CounterViewModel = viewModel(
+                    factory = CounterViewModelFactory(
+                        Repository(AppDatabase.getDB(applicationContext))
+                    )
+                )
 
                 NavHost(navController, startDestination = "Main") {
 

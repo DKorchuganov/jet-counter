@@ -5,8 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import com.jvmlab.android.jetcounter.counters.SingleCounter
 
 
-class SimpleCounterModel(counterName: String) : AbstractCounterModel<SingleCounter>() {
-    override val counter = SingleCounter(counterName)
+class SimpleCounterModel(
+    counterName: String,
+    count: Int = 0
+) : AbstractCounterModel<SingleCounter>() {
+    override val counter = SingleCounter(counterName, count)
 
     private val _countStringLive = MutableLiveData("0")
     val countStringLive: LiveData<String> = _countStringLive
