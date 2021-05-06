@@ -10,7 +10,7 @@ import com.jvmlab.android.jetcounter.entities.SingleCounterEntity
 @Dao
 interface SingleCounterDao {
     @Query("SELECT * FROM single_counters")
-    fun getAll(): List<SingleCounterEntity>
+    suspend fun getAll(): List<SingleCounterEntity>
 
     @Insert
     fun insert(entity: SingleCounterEntity)

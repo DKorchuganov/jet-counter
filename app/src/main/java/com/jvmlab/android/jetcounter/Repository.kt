@@ -6,12 +6,12 @@ import com.jvmlab.android.jetcounter.models.SimpleCounterModel
 
 class Repository(private val db: AppDatabase) {
 
-    fun getAllSingleCounters(): List<SingleCounter> =
+    suspend fun getAllSingleCounters(): List<SingleCounter> =
         db.singleCounterDao().getAll().map {
             SingleCounter(it.name, it.count)
         }
 
-    fun getAllSingleCounterModels(): List<SimpleCounterModel> =
+    suspend fun getAllSimpleCounterModels(): List<SimpleCounterModel> =
         db.singleCounterDao().getAll().map {
             SimpleCounterModel(it.name, it.count)
         }
