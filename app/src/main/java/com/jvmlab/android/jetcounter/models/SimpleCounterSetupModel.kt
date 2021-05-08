@@ -6,21 +6,33 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class SimpleCounterSetupModel(repository: Repository, coroutineScope: CoroutineScope) :
-    AbstractCounterSetupModel() {
+class SimpleCounterSetupModel(
+    private val repository: Repository,
+    private val coroutineScope: CoroutineScope
+) : AbstractCounterSetupModel() {
 
     private val _counterModelList = mutableListOf<SimpleCounterModel>()
     val counterModelList: List<SimpleCounterModel> = _counterModelList
 
     init {
         coroutineScope.launch(Dispatchers.IO) {
-            _counterModelList.addAll(repository.getAllSimpleCounterModels())
+            _counterModelList.addAll(
+                repository.getAllSingleCounters().map {
+                    SimpleCounterModel(it, repository, coroutineScope)
+                }
+            )
         }
     }
 
 
     override fun onDone() {
-        _counterModelList.add(SimpleCounterModel(_counterTitleLive.value ?: ""))
+        _counterModelList.add(
+            SimpleCounterModel(
+                _counterTitleLive.value ?: "",
+                repository = repository,
+                coroutineScope = coroutineScope
+            )
+        )
         _counterTitleLive.value = ""
     }
 }

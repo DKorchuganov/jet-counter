@@ -13,8 +13,8 @@ interface SingleCounterDao {
     suspend fun getAll(): List<SingleCounterEntity>
 
     @Insert
-    fun insert(entity: SingleCounterEntity)
+    suspend fun insert(entity: SingleCounterEntity)
 
     @Update
-    fun update(entity: SingleCounterEntity)
+    suspend fun update(entity: SingleCounterEntity)
 }
