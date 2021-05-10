@@ -13,12 +13,16 @@ class SimpleCounterModel : AbstractCounterModel<SingleCounter> {
     override val counter: SingleCounter
     private val repository: Repository
     private val coroutineScope: CoroutineScope
+    private val _countStringLive: MutableLiveData<String>
+    val countStringLive: LiveData<String>
 
     constructor(counterName: String,
                 count: Int = 0,
                 repository: Repository,
                 coroutineScope: CoroutineScope) {
         counter = SingleCounter(counterName, count)
+        _countStringLive = MutableLiveData(counter.count.toString())
+        countStringLive = _countStringLive
         this.repository = repository
         this.coroutineScope = coroutineScope
         coroutineScope.launch(Dispatchers.IO) {
@@ -32,13 +36,12 @@ class SimpleCounterModel : AbstractCounterModel<SingleCounter> {
         coroutineScope: CoroutineScope
     ) {
         this.counter = counter
+        _countStringLive = MutableLiveData(counter.count.toString())
+        countStringLive = _countStringLive
         this.repository = repository
         this.coroutineScope = coroutineScope
     }
 
-
-    private val _countStringLive = MutableLiveData("0")
-    val countStringLive: LiveData<String> = _countStringLive
 
     fun onIncrement() = updateLiveValue(1)
 
