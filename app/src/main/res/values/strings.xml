@@ -8,4 +8,5 @@
     <string name="counter_title">Title</string>
     <string name="done_button">Done</string>
     <string name="counter_name">Counter</string>
+    <string name="show_details">Show details</string>
 </resources>

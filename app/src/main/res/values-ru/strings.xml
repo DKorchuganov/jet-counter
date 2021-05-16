@@ -8,4 +8,5 @@
     <string name="counter_title">Заголовок</string>
     <string name="done_button">Готово</string>
     <string name="counter_name">Счетчик</string>
+    <string name="show_details">Подробнее</string>
 </resources>
