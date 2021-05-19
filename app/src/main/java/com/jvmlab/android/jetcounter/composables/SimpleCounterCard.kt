@@ -4,9 +4,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.ExpandMore
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.material.icons.outlined.*
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,16 +34,50 @@ fun SimpleCounterCard(model: SimpleCounterModel, onClick: () -> Unit) {
                 Text(text = countString, style = MaterialTheme.typography.h5)
             }
             Divider(modifier = Modifier.padding(horizontal = 8.dp))
+
+            var expanded by remember { mutableStateOf(false) }
             Row(
                 modifier = Modifier
                     .padding(8.dp)
                     .fillMaxWidth()
-                    .clickable(onClick = { /*TODO*/ }),
+                    .clickable(
+                        onClick = {
+                            expanded = !expanded
+                        }
+                    ),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = stringResource(R.string.show_details))
-                Icon(Icons.Outlined.ExpandMore, null)
+                if (expanded) {
+                    Text(text = stringResource(R.string.hide_details))
+                    Icon(Icons.Outlined.ExpandLess, null)
+                } else {
+                    Text(text = stringResource(R.string.show_details))
+                    Icon(Icons.Outlined.ExpandMore, null)
+                }
+
+            }
+            if (expanded) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    IconButton(
+                        onClick = { /*TODO()*/ }
+                    ) {
+                        Icon(Icons.Outlined.Delete, null)
+                    }
+                    IconButton(
+                        onClick = { /*TODO()*/ }
+                    ) {
+                        Icon(Icons.Outlined.ContentCopy, null)
+                    }
+                    IconButton(
+                        onClick = { /*TODO()*/ }
+                    ) {
+                        Icon(Icons.Outlined.Share, null)
+                    }
+                }
             }
         }
     }

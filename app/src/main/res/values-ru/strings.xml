@@ -9,4 +9,5 @@
     <string name="done_button">Готово</string>
     <string name="counter_name">Счетчик</string>
     <string name="show_details">Подробнее</string>
+    <string name="hide_details">Скрыть подробности</string>
 </resources>

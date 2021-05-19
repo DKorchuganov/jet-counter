@@ -9,4 +9,5 @@
     <string name="done_button">Done</string>
     <string name="counter_name">Counter</string>
     <string name="show_details">Show details</string>
+    <string name="hide_details">Hide details</string>
 </resources>
