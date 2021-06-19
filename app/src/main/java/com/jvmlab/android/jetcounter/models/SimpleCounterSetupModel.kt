@@ -35,4 +35,11 @@ class SimpleCounterSetupModel(
         )
         _counterTitleLive.value = ""
     }
+
+
+    override fun onDelete(index: Int) {
+       val model = _counterModelList.removeAt(index)
+       model.deleteCounter()
+    }
+
 }

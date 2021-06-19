@@ -15,4 +15,6 @@ abstract class AbstractCounterSetupModel {
     }
 
     abstract fun onDone()
+
+    abstract fun onDelete(index: Int)
 }

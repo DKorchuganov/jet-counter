@@ -21,4 +21,10 @@ class Repository(private val db: AppDatabase) {
             SingleCounterEntity(counter.id, counter.name, counter.count)
         )
     }
+
+    suspend fun deleteSingleCounter(counter: SingleCounter) {
+        db.singleCounterDao().delete(
+            SingleCounterEntity(counter.id, counter.name, counter.count)
+        )
+    }
 }

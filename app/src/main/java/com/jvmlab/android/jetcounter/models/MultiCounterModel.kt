@@ -26,4 +26,8 @@ class MultiCounterModel(
     private fun updateLiveValue(inc: Int, index: Int) {
         _countStringLiveList[index].value = counter.increment(inc, index).toString()
     }
+
+    override fun deleteCounter() {
+        TODO("Not yet implemented")
+    }
 }

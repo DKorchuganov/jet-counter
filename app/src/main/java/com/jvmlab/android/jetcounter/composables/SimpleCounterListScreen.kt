@@ -7,7 +7,6 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.navigate
 import com.jvmlab.android.jetcounter.CounterViewModel
 import com.jvmlab.android.jetcounter.R
 

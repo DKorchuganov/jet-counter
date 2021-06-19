@@ -46,4 +46,8 @@ class MultiCounterSetupModel : AbstractCounterSetupModel() {
         _counterNameLiveList.clear()
         onCounterNameAdd()
     }
+
+    override fun onDelete(index: Int) {
+        TODO("Not yet implemented")
+    }
 }

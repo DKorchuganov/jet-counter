@@ -1,9 +1,6 @@
 package com.jvmlab.android.jetcounter.daos
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.jvmlab.android.jetcounter.entities.SingleCounterEntity
 
 
@@ -17,4 +14,7 @@ interface SingleCounterDao {
 
     @Update
     suspend fun update(entity: SingleCounterEntity)
+
+    @Delete
+    suspend fun delete(entity: SingleCounterEntity)
 }

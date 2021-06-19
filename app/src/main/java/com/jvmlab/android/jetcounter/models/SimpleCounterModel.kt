@@ -54,4 +54,11 @@ class SimpleCounterModel : AbstractCounterModel<SingleCounter> {
         }
     }
 
+    override fun deleteCounter() {
+        coroutineScope.launch(Dispatchers.IO) {
+            repository.deleteSingleCounter(counter)
+        }
+    }
+
+
 }
