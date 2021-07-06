@@ -9,10 +9,7 @@ import kotlinx.coroutines.launch
 class SimpleCounterSetupModel(
     private val repository: Repository,
     private val coroutineScope: CoroutineScope
-) : AbstractCounterSetupModel() {
-
-    private val _counterModelList = mutableListOf<SimpleCounterModel>()
-    val counterModelList: List<SimpleCounterModel> = _counterModelList
+) : AbstractCounterSetupModel<SimpleCounterModel>() {
 
     init {
         coroutineScope.launch(Dispatchers.IO) {
@@ -21,7 +18,9 @@ class SimpleCounterSetupModel(
                     SimpleCounterModel(it, repository, coroutineScope)
                 }
             )
+            _numberOfModelsLive.postValue(_counterModelList.size)
         }
+
     }
 
 
@@ -33,12 +32,14 @@ class SimpleCounterSetupModel(
                 coroutineScope = coroutineScope
             )
         )
+        _numberOfModelsLive.value = _counterModelList.size
         _counterTitleLive.value = ""
     }
 
 
     override fun onDelete(index: Int) {
        val model = _counterModelList.removeAt(index)
+        _numberOfModelsLive.value = _counterModelList.size
        model.deleteCounter()
     }
 

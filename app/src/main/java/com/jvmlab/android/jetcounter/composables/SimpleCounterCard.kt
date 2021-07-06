@@ -16,7 +16,7 @@ import com.jvmlab.android.jetcounter.models.SimpleCounterModel
 
 
 @Composable
-fun SimpleCounterCard(model: SimpleCounterModel, onClick: () -> Unit) {
+fun SimpleCounterCard(model: SimpleCounterModel, onDelete: () -> Unit, onClick: () -> Unit) {
     val countString: String by model.countStringLive.observeAsState("")
     Card(
         modifier = Modifier.padding(bottom = 16.dp),
@@ -63,7 +63,7 @@ fun SimpleCounterCard(model: SimpleCounterModel, onClick: () -> Unit) {
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     IconButton(
-                        onClick = { /*TODO()*/ }
+                        onClick = onDelete
                     ) {
                         Icon(Icons.Outlined.Delete, null)
                     }

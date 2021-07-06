@@ -7,7 +7,7 @@ class Repository(private val db: AppDatabase) {
 
     suspend fun getAllSingleCounters(): List<SingleCounter> =
         db.singleCounterDao().getAll().map {
-            SingleCounter(it.name, it.count)
+           SingleCounter(it.id, it.name, it.count)
         }
 
     suspend fun insertSingleCounter(counter: SingleCounter) {

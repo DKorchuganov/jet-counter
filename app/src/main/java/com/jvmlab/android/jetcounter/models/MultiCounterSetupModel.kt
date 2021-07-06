@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 
-class MultiCounterSetupModel : AbstractCounterSetupModel() {
-
-    private val _counterModelList = mutableListOf<MultiCounterModel>()
-    val counterModelList: List<MultiCounterModel> = _counterModelList
+class MultiCounterSetupModel : AbstractCounterSetupModel<MultiCounterModel>() {
 
     private val _counterNameLiveList =
         mutableListOf(MutableLiveData(""))

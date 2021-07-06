@@ -13,13 +13,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jvmlab.android.jetcounter.R
+import com.jvmlab.android.jetcounter.counters.BasicCounter
+import com.jvmlab.android.jetcounter.models.AbstractCounterModel
 import com.jvmlab.android.jetcounter.models.AbstractCounterSetupModel
 
 
 @ExperimentalComposeUiApi
 @Composable
 fun CounterSetupTemplate(
-    model: AbstractCounterSetupModel,
+    model: AbstractCounterSetupModel<out AbstractCounterModel<out BasicCounter>>,
     navigateToCounter: () -> Unit,
     content: @Composable () -> Unit = {}
 ) {
