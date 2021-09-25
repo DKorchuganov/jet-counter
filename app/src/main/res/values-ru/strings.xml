@@ -10,4 +10,8 @@
     <string name="counter_name">Счетчик</string>
     <string name="show_details">Подробнее</string>
     <string name="hide_details">Скрыть подробности</string>
+    <string name="confirm_delete">Подтвердите удаление</string>
+    <string name="confirm_delete_counter">Вы действительно хотите удалить этот счетчик?</string>
+    <string name="confirm_delete_button">Удалить</string>
+    <string name="cancel_button">Отмена</string>
 </resources>

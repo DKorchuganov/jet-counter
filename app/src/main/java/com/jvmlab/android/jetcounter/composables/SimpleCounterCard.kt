@@ -36,6 +36,7 @@ fun SimpleCounterCard(model: SimpleCounterModel, onDelete: () -> Unit, onClick: 
             Divider(modifier = Modifier.padding(horizontal = 8.dp))
 
             var expanded by remember { mutableStateOf(false) }
+            var showDeleteDialog by remember { mutableStateOf(false) }
             Row(
                 modifier = Modifier
                     .padding(8.dp)
@@ -63,7 +64,7 @@ fun SimpleCounterCard(model: SimpleCounterModel, onDelete: () -> Unit, onClick: 
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     IconButton(
-                        onClick = onDelete
+                        onClick = { showDeleteDialog = true }
                     ) {
                         Icon(Icons.Outlined.Delete, null)
                     }
@@ -78,6 +79,32 @@ fun SimpleCounterCard(model: SimpleCounterModel, onDelete: () -> Unit, onClick: 
                         Icon(Icons.Outlined.Share, null)
                     }
                 }
+            }
+            if (showDeleteDialog) {
+                AlertDialog(
+                    onDismissRequest = { showDeleteDialog = false },
+                    title = {
+                        Text(text = stringResource(R.string.confirm_delete))
+                    },
+                    text = { 
+                        Text(text = stringResource(R.string.confirm_delete_counter))
+                    },
+                    confirmButton = {
+                        Button(
+                            onClick = {
+                                showDeleteDialog = false
+                                onDelete()
+                            }
+                        ) {
+                            Text(stringResource(R.string.confirm_delete_button))
+                        }
+                    },
+                    dismissButton = {
+                        Button(onClick = { showDeleteDialog = false }) {
+                            Text(stringResource(R.string.cancel_button))
+                        }
+                    },
+                )
             }
         }
     }

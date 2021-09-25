@@ -10,4 +10,8 @@
     <string name="counter_name">Counter</string>
     <string name="show_details">Show details</string>
     <string name="hide_details">Hide details</string>
+    <string name="confirm_delete">Confirm deletion</string>
+    <string name="confirm_delete_counter">Do you really want to delete this counter?</string>
+    <string name="confirm_delete_button">Delete</string>
+    <string name="cancel_button">Cancel</string>
 </resources>
