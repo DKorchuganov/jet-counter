@@ -2,16 +2,14 @@ package com.jvmlab.android.jetcounter.composables
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.*
-import androidx.compose.runtime.*
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.jvmlab.android.jetcounter.R
 import com.jvmlab.android.jetcounter.models.SimpleCounterModel
 
 
@@ -33,79 +31,8 @@ fun SimpleCounterCard(model: SimpleCounterModel, onDelete: () -> Unit, onClick: 
                 Text(text = model.title, style = MaterialTheme.typography.h5)
                 Text(text = countString, style = MaterialTheme.typography.h5)
             }
-            Divider(modifier = Modifier.padding(horizontal = 8.dp))
 
-            var expanded by remember { mutableStateOf(false) }
-            var showDeleteDialog by remember { mutableStateOf(false) }
-            Row(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .fillMaxWidth()
-                    .clickable(
-                        onClick = {
-                            expanded = !expanded
-                        }
-                    ),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                if (expanded) {
-                    Text(text = stringResource(R.string.hide_details))
-                    Icon(Icons.Outlined.ExpandLess, null)
-                } else {
-                    Text(text = stringResource(R.string.show_details))
-                    Icon(Icons.Outlined.ExpandMore, null)
-                }
-
-            }
-            if (expanded) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    IconButton(
-                        onClick = { showDeleteDialog = true }
-                    ) {
-                        Icon(Icons.Outlined.Delete, null)
-                    }
-                    IconButton(
-                        onClick = { /*TODO()*/ }
-                    ) {
-                        Icon(Icons.Outlined.ContentCopy, null)
-                    }
-                    IconButton(
-                        onClick = { /*TODO()*/ }
-                    ) {
-                        Icon(Icons.Outlined.Share, null)
-                    }
-                }
-            }
-            if (showDeleteDialog) {
-                AlertDialog(
-                    onDismissRequest = { showDeleteDialog = false },
-                    title = {
-                        Text(text = stringResource(R.string.confirm_delete))
-                    },
-                    text = { 
-                        Text(text = stringResource(R.string.confirm_delete_counter))
-                    },
-                    confirmButton = {
-                        Button(
-                            onClick = {
-                                showDeleteDialog = false
-                                onDelete()
-                            }
-                        ) {
-                            Text(stringResource(R.string.confirm_delete_button))
-                        }
-                    },
-                    dismissButton = {
-                        Button(onClick = { showDeleteDialog = false }) {
-                            Text(stringResource(R.string.cancel_button))
-                        }
-                    },
-                )
-            }
+            CounterCardDetails(onDelete)
         }
     }
 }
