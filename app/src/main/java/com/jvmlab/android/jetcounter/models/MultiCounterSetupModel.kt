@@ -6,6 +6,10 @@ import androidx.lifecycle.MutableLiveData
 
 class MultiCounterSetupModel : AbstractCounterSetupModel<MultiCounterModel>() {
 
+    init {
+        _numberOfModelsLive.postValue(_counterModelList.size)
+    }
+
     private val _counterNameLiveList =
         mutableListOf(MutableLiveData(""))
     val counterNameLiveList: List<LiveData<String>> = _counterNameLiveList
@@ -39,12 +43,14 @@ class MultiCounterSetupModel : AbstractCounterSetupModel<MultiCounterModel>() {
                 }
             )
         )
+        _numberOfModelsLive.value = _counterModelList.size
         _counterTitleLive.value = ""
         _counterNameLiveList.clear()
         onCounterNameAdd()
     }
 
     override fun onDelete(index: Int) {
-        TODO("Not yet implemented")
+        _counterModelList.removeAt(index)
+        _numberOfModelsLive.value = _counterModelList.size
     }
 }

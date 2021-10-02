@@ -22,7 +22,11 @@ fun MultiCounterListScreen(navController: NavHostController, model: CounterViewM
             }
         }
     ) {
-        MultiCounterList(model.multiCounterSetupModel.counterModelList) {
+        MultiCounterList(
+            model.multiCounterSetupModel.counterModelList,
+            model.multiCounterSetupModel.numberOfModelsLive,
+            model.multiCounterSetupModel::onDelete
+        ) {
             navController.navigate("MultiCounter/$it")
         }
     }

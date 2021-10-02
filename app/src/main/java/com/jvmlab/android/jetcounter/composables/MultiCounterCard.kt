@@ -12,7 +12,7 @@ import com.jvmlab.android.jetcounter.models.MultiCounterModel
 
 
 @Composable
-fun MultiCounterCard(model: MultiCounterModel, onClick: () -> Unit) {
+fun MultiCounterCard(model: MultiCounterModel, onDelete: () -> Unit, onClick: () -> Unit) {
     Card(
         modifier = Modifier.padding(bottom = 16.dp),
         elevation = 4.dp
@@ -27,7 +27,7 @@ fun MultiCounterCard(model: MultiCounterModel, onClick: () -> Unit) {
             ) {
                 Text(text = model.title, style = MaterialTheme.typography.h5)
             }
-            CounterCardDetails{}
+            CounterCardDetails(onDelete)
         }
 
     }
