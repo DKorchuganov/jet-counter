@@ -32,7 +32,7 @@ fun SimpleCounterCard(model: SimpleCounterModel, onDelete: () -> Unit, onClick: 
                 Text(text = countString, style = MaterialTheme.typography.h5)
             }
 
-            CounterCardDetails(onDelete)
+            CounterCardDetails(model.id, onDelete)
         }
     }
 }

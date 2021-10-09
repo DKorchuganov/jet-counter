@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
 import com.jvmlab.android.jetcounter.R
 
 @Composable
-fun CounterCardDetails(onDelete: () -> Unit) {
-    var expanded by remember { mutableStateOf(false) }
+fun CounterCardDetails(id: String, onDelete: () -> Unit) {
+    var expanded by remember(id) { mutableStateOf(false) }
     var showDeleteDialog by remember { mutableStateOf(false) }
 
     Divider(modifier = Modifier.padding(horizontal = 8.dp))

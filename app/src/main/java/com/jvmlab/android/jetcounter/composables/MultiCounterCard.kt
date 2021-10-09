@@ -27,7 +27,7 @@ fun MultiCounterCard(model: MultiCounterModel, onDelete: () -> Unit, onClick: ()
             ) {
                 Text(text = model.title, style = MaterialTheme.typography.h5)
             }
-            CounterCardDetails(onDelete)
+            CounterCardDetails(model.id, onDelete)
         }
 
     }
