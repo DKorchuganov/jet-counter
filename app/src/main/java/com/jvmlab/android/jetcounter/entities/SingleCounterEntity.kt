@@ -8,5 +8,6 @@ import androidx.room.PrimaryKey
 data class SingleCounterEntity(
     @PrimaryKey val id: String,
     val name: String,
-    val count: Int
+    val count: Int,
+    val parentId: String? = null
 )

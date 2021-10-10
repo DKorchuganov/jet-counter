@@ -5,10 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.jvmlab.android.jetcounter.daos.SingleCounterDao
+import com.jvmlab.android.jetcounter.entities.ListCounterEntity
 import com.jvmlab.android.jetcounter.entities.SingleCounterEntity
 
 
-@Database(entities = [SingleCounterEntity::class], version = 1)
+@Database(
+    version = 2,
+    entities = [
+        SingleCounterEntity::class,
+        ListCounterEntity::class
+    ]
+)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun singleCounterDao(): SingleCounterDao
 
@@ -26,6 +33,6 @@ abstract class AppDatabase : RoomDatabase() {
             Room.databaseBuilder(
                 applicationContext,
                 AppDatabase::class.java, "counters"
-            ).build()
+            ).fallbackToDestructiveMigration().build()
     }
 }
