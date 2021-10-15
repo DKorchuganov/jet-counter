@@ -10,7 +10,7 @@ import com.jvmlab.android.jetcounter.entities.SingleCounterEntity
 
 
 @Database(
-    version = 2,
+    version = 3,
     entities = [
         SingleCounterEntity::class,
         ListCounterEntity::class
