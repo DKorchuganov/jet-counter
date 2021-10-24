@@ -23,9 +23,7 @@ class MainActivity : AppCompatActivity() {
             JetCounterTheme {
                 val navController = rememberNavController()
                 val model: CounterViewModel = viewModel(
-                    factory = CounterViewModelFactory(
-                        Repository(AppDatabase.getDB(applicationContext))
-                    )
+                    factory = CounterViewModelFactory(AppDatabase.getDB(applicationContext))
                 )
 
                 NavHost(navController, startDestination = "Main") {

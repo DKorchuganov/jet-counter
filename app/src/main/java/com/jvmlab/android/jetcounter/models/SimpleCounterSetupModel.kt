@@ -1,20 +1,20 @@
 package com.jvmlab.android.jetcounter.models
 
-import com.jvmlab.android.jetcounter.Repository
+import com.jvmlab.android.jetcounter.SingleCounterRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
 class SimpleCounterSetupModel(
-    private val repository: Repository,
+    private val repository: SingleCounterRepository,
     private val coroutineScope: CoroutineScope
 ) : AbstractCounterSetupModel<SimpleCounterModel>() {
 
     init {
         coroutineScope.launch(Dispatchers.IO) {
             _counterModelList.addAll(
-                repository.getAllSingleCounters().map {
+                repository.getAll().map {
                     SimpleCounterModel(it, repository, coroutineScope)
                 }
             )

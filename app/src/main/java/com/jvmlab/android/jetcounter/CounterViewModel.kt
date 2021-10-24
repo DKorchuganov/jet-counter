@@ -5,9 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.jvmlab.android.jetcounter.models.MultiCounterSetupModel
 import com.jvmlab.android.jetcounter.models.SimpleCounterSetupModel
 
-class CounterViewModel(repository: Repository) : ViewModel() {
+class CounterViewModel(database: AppDatabase) : ViewModel() {
 
-    val simpleCounterSetupModel = SimpleCounterSetupModel(repository, viewModelScope)
+    val simpleCounterSetupModel = SimpleCounterSetupModel(
+        SingleCounterRepository(database),
+        viewModelScope
+    )
 
     val multiCounterSetupModel = MultiCounterSetupModel()
 }

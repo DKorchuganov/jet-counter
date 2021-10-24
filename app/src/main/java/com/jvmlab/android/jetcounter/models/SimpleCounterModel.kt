@@ -2,7 +2,7 @@ package com.jvmlab.android.jetcounter.models
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.jvmlab.android.jetcounter.Repository
+import com.jvmlab.android.jetcounter.SingleCounterRepository
 import com.jvmlab.android.jetcounter.counters.SingleCounter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,14 +11,14 @@ import kotlinx.coroutines.launch
 
 class SimpleCounterModel : AbstractCounterModel<SingleCounter> {
     override val counter: SingleCounter
-    private val repository: Repository
+    private val repository: SingleCounterRepository
     private val coroutineScope: CoroutineScope
     private val _countStringLive: MutableLiveData<String>
     val countStringLive: LiveData<String>
 
     constructor(counterName: String,
                 count: Int = 0,
-                repository: Repository,
+                repository: SingleCounterRepository,
                 coroutineScope: CoroutineScope) {
         counter = SingleCounter(counterName, count)
         _countStringLive = MutableLiveData(counter.count.toString())
@@ -26,13 +26,13 @@ class SimpleCounterModel : AbstractCounterModel<SingleCounter> {
         this.repository = repository
         this.coroutineScope = coroutineScope
         coroutineScope.launch(Dispatchers.IO) {
-            repository.insertSingleCounter(counter)
+            repository.insert(counter)
         }
     }
 
     constructor(
         counter: SingleCounter,
-        repository: Repository,
+        repository: SingleCounterRepository,
         coroutineScope: CoroutineScope
     ) {
         this.counter = counter
@@ -50,13 +50,13 @@ class SimpleCounterModel : AbstractCounterModel<SingleCounter> {
     private fun updateLiveValue(inc: Int) {
         _countStringLive.value = counter.increment(inc).toString()
         coroutineScope.launch(Dispatchers.IO) {
-            repository.updateSingleCounter(counter)
+            repository.update(counter)
         }
     }
 
     override fun deleteCounter() {
         coroutineScope.launch(Dispatchers.IO) {
-            repository.deleteSingleCounter(counter)
+            repository.delete(counter)
         }
     }
 

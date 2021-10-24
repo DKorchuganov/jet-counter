@@ -3,26 +3,26 @@ package com.jvmlab.android.jetcounter
 import com.jvmlab.android.jetcounter.counters.SingleCounter
 import com.jvmlab.android.jetcounter.entities.SingleCounterEntity
 
-class Repository(private val db: AppDatabase) {
+class SingleCounterRepository(private val db: AppDatabase) {
 
-    suspend fun getAllSingleCounters(): List<SingleCounter> =
+    suspend fun getAll(): List<SingleCounter> =
         db.singleCounterDao().getAll().map {
            SingleCounter(it.id, it.name, it.count)
         }
 
-    suspend fun insertSingleCounter(counter: SingleCounter) {
+    suspend fun insert(counter: SingleCounter) {
         db.singleCounterDao().insert(
             SingleCounterEntity(counter.id, counter.name, counter.count)
         )
     }
 
-    suspend fun updateSingleCounter(counter: SingleCounter) {
+    suspend fun update(counter: SingleCounter) {
         db.singleCounterDao().update(
             SingleCounterEntity(counter.id, counter.name, counter.count)
         )
     }
 
-    suspend fun deleteSingleCounter(counter: SingleCounter) {
+    suspend fun delete(counter: SingleCounter) {
         db.singleCounterDao().delete(
             SingleCounterEntity(counter.id, counter.name, counter.count)
         )
