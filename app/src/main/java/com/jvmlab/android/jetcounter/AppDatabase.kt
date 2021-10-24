@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.jvmlab.android.jetcounter.daos.ListCounterDao
 import com.jvmlab.android.jetcounter.daos.SingleCounterDao
 import com.jvmlab.android.jetcounter.entities.ListCounterEntity
 import com.jvmlab.android.jetcounter.entities.SingleCounterEntity
@@ -18,6 +19,7 @@ import com.jvmlab.android.jetcounter.entities.SingleCounterEntity
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun singleCounterDao(): SingleCounterDao
+    abstract fun listCounterDao(): ListCounterDao
 
     companion object {
         @Volatile
