@@ -1,6 +1,6 @@
 package com.jvmlab.android.jetcounter.models
 
-import com.jvmlab.android.jetcounter.SingleCounterRepository
+import com.jvmlab.android.jetcounter.repositories.SingleCounterRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -1,5 +1,6 @@
-package com.jvmlab.android.jetcounter
+package com.jvmlab.android.jetcounter.repositories
 
+import com.jvmlab.android.jetcounter.AppDatabase
 import com.jvmlab.android.jetcounter.counters.SingleCounter
 import com.jvmlab.android.jetcounter.entities.SingleCounterEntity
 

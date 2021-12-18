@@ -9,7 +9,7 @@ class MultiCounterModel(
     counterName: String,
     counterNames: List<String>
 ) : AbstractCounterModel<ListCounter>() {
-    override val counter = ListCounter(counterNames, counterName)
+    override val counter = ListCounter(counterName, counterNames)
 
     val names: List<String>
         get() = counter.names
