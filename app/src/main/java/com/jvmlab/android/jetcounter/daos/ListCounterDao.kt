@@ -24,6 +24,6 @@ interface ListCounterDao {
     @Transaction
     suspend fun insert(entity: ListCounterWithSingleCounters) {
         insertListCounter(entity.listCounterEntity)
-        insertSingleCounters(entity.counters)
+        insertSingleCounters(entity.counterEntities)
     }
 }

@@ -10,5 +10,5 @@ data class ListCounterWithSingleCounters(
         parentColumn = "id",
         entityColumn = "parentId"
     )
-    val counters: List<SingleCounterEntity>
+    val counterEntities: List<SingleCounterEntity>
 )

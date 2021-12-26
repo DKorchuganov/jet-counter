@@ -2,7 +2,7 @@ package com.jvmlab.android.jetcounter.counters
 
 
 class ListCounter : BasicCounter {
-    private val counters: List<SingleCounter>
+     val counters: List<SingleCounter>
 
     constructor(id: String, name: String, counters: List<SingleCounter>) : super(id, name) {
         this.counters = counters.map {

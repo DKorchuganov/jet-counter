@@ -2,10 +2,13 @@ package com.jvmlab.android.jetcounter.counters
 
 
 class SingleCounter : BasicCounter {
+    val parentId: String? = null
+
     var count: Int
         private set
 
-    constructor(id: String, name: String, count: Int = 0) : super(id, name) {
+    constructor(id: String, name: String, count: Int = 0, parentId: String? = null) :
+            super(id, name) {
         this.count = count
     }
 
