@@ -27,7 +27,7 @@ class SimpleCounterSetupModel(
     override fun onDone() {
         _counterModelList.add(
             SimpleCounterModel(
-                _counterTitleLive.value ?: "",
+                counterName = _counterTitleLive.value ?: "",
                 repository = repository,
                 coroutineScope = coroutineScope
             )

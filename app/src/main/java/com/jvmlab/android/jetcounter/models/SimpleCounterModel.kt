@@ -16,10 +16,13 @@ class SimpleCounterModel : AbstractCounterModel<SingleCounter> {
     private val _countStringLive: MutableLiveData<String>
     val countStringLive: LiveData<String>
 
-    constructor(counterName: String,
-                count: Int = 0,
-                repository: SingleCounterRepository,
-                coroutineScope: CoroutineScope) {
+    /* Constructs model and creates a new counter */
+    constructor(
+        counterName: String,
+        count: Int = 0,
+        repository: SingleCounterRepository,
+        coroutineScope: CoroutineScope
+    ) {
         counter = SingleCounter(counterName, count)
         _countStringLive = MutableLiveData(counter.count.toString())
         countStringLive = _countStringLive
@@ -30,6 +33,7 @@ class SimpleCounterModel : AbstractCounterModel<SingleCounter> {
         }
     }
 
+    /* Constructs model with an existing counter */
     constructor(
         counter: SingleCounter,
         repository: SingleCounterRepository,

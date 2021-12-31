@@ -2,9 +2,14 @@ package com.jvmlab.android.jetcounter.models
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.jvmlab.android.jetcounter.repositories.ListCounterRepository
+import kotlinx.coroutines.CoroutineScope
 
 
-class MultiCounterSetupModel : AbstractCounterSetupModel<MultiCounterModel>() {
+class MultiCounterSetupModel(
+    private val repository: ListCounterRepository,
+    private val coroutineScope: CoroutineScope
+) : AbstractCounterSetupModel<MultiCounterModel>() {
 
     init {
         _numberOfModelsLive.postValue(_counterModelList.size)
@@ -40,7 +45,9 @@ class MultiCounterSetupModel : AbstractCounterSetupModel<MultiCounterModel>() {
                 counterTitleLive.value ?: "",
                 counterNameLiveList.map {
                     it.value ?: ""
-                }
+                },
+                repository,
+                coroutineScope
             )
         )
         _numberOfModelsLive.value = _counterModelList.size
