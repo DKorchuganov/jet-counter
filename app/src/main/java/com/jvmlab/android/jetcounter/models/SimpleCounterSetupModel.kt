@@ -20,7 +20,6 @@ class SimpleCounterSetupModel(
             )
             _numberOfModelsLive.postValue(_counterModelList.size)
         }
-
     }
 
 

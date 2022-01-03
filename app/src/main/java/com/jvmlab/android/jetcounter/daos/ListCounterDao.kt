@@ -1,9 +1,6 @@
 package com.jvmlab.android.jetcounter.daos
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.jvmlab.android.jetcounter.entities.ListCounterEntity
 import com.jvmlab.android.jetcounter.entities.ListCounterWithSingleCounters
 import com.jvmlab.android.jetcounter.entities.SingleCounterEntity
@@ -25,5 +22,10 @@ interface ListCounterDao {
     suspend fun insert(entity: ListCounterWithSingleCounters) {
         insertListCounter(entity.listCounterEntity)
         insertSingleCounters(entity.counterEntities)
+        println("!!ATTENTION!!!!!!")
+        println(entity)
     }
+
+    @Delete
+    suspend fun delete(entity: ListCounterEntity)
 }

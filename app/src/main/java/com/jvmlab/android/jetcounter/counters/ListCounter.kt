@@ -6,13 +6,13 @@ class ListCounter : BasicCounter {
 
     constructor(id: String, name: String, counters: List<SingleCounter>) : super(id, name) {
         this.counters = counters.map {
-            SingleCounter(it.id, it.name, it.count)
+            SingleCounter(id = it.id, name = it.name, count = it.count)
         }
     }
 
     constructor(name: String, counterNames: List<String>) : super(name) {
         counters = counterNames.map {
-            SingleCounter(it)
+            SingleCounter(name = it, parentId =  id)
         }
     }
 

@@ -23,7 +23,7 @@ class SimpleCounterModel : AbstractCounterModel<SingleCounter> {
         repository: SingleCounterRepository,
         coroutineScope: CoroutineScope
     ) {
-        counter = SingleCounter(counterName, count)
+        counter = SingleCounter(name = counterName, count =  count)
         _countStringLive = MutableLiveData(counter.count.toString())
         countStringLive = _countStringLive
         this.repository = repository

@@ -64,6 +64,8 @@ class MultiCounterModel : AbstractCounterModel<ListCounter> {
     }
 
     override fun deleteCounter() {
-        TODO("Not yet implemented")
+        coroutineScope.launch(Dispatchers.IO) {
+            repository.delete(counter)
+        }
     }
 }

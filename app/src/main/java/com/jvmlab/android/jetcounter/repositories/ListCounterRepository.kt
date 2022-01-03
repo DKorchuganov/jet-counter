@@ -17,16 +17,16 @@ class ListCounterRepository(private val db: AppDatabase) {
                 it.listCounterEntity.name,
                 it.counterEntities.map { singleCounterEntity ->
                     SingleCounter(
-                        singleCounterEntity.id,
-                        singleCounterEntity.name,
-                        singleCounterEntity.count,
-                        singleCounterEntity.parentId
+                        id = singleCounterEntity.id,
+                        name = singleCounterEntity.name,
+                        parentId = singleCounterEntity.parentId,
+                        count = singleCounterEntity.count
                     )
                 }
             )
         }
 
-    suspend fun insert(counter: ListCounter) {
+    suspend fun insert(counter: ListCounter) =
         db.listCounterDao().insert(
            ListCounterWithSingleCounters(
                ListCounterEntity(counter.id, counter.name),
@@ -35,5 +35,9 @@ class ListCounterRepository(private val db: AppDatabase) {
                }
            )
         )
-    }
+
+    suspend fun delete(counter: ListCounter) =
+        db.listCounterDao().delete(
+            ListCounterEntity(counter.id, counter.name)
+        )
 }

@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jvmlab.android.jetcounter.repositories.ListCounterRepository
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class MultiCounterSetupModel(
@@ -12,7 +14,14 @@ class MultiCounterSetupModel(
 ) : AbstractCounterSetupModel<MultiCounterModel>() {
 
     init {
-        _numberOfModelsLive.postValue(_counterModelList.size)
+        coroutineScope.launch(Dispatchers.IO) {
+            _counterModelList.addAll(
+                repository.getAll().map {
+                    MultiCounterModel(it, repository, coroutineScope)
+                }
+            )
+            _numberOfModelsLive.postValue(_counterModelList.size)
+        }
     }
 
     private val _counterNameLiveList =
@@ -57,7 +66,8 @@ class MultiCounterSetupModel(
     }
 
     override fun onDelete(index: Int) {
-        _counterModelList.removeAt(index)
+        val model = _counterModelList.removeAt(index)
         _numberOfModelsLive.value = _counterModelList.size
+        model.deleteCounter()
     }
 }

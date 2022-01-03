@@ -8,24 +8,21 @@ class SingleCounterRepository(private val db: AppDatabase) {
 
     suspend fun getAll(): List<SingleCounter> =
         db.singleCounterDao().getAll().map {
-           SingleCounter(it.id, it.name, it.count)
+           SingleCounter(id = it.id, name = it.name, count = it.count)
         }
 
-    suspend fun insert(counter: SingleCounter) {
+    suspend fun insert(counter: SingleCounter) =
         db.singleCounterDao().insert(
             SingleCounterEntity(counter.id, counter.name, counter.count)
         )
-    }
 
-    suspend fun update(counter: SingleCounter) {
+    suspend fun update(counter: SingleCounter) =
         db.singleCounterDao().update(
             SingleCounterEntity(counter.id, counter.name, counter.count)
         )
-    }
 
-    suspend fun delete(counter: SingleCounter) {
+    suspend fun delete(counter: SingleCounter) =
         db.singleCounterDao().delete(
             SingleCounterEntity(counter.id, counter.name, counter.count)
         )
-    }
 }
