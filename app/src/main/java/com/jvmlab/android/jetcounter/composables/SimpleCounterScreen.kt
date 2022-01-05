@@ -11,10 +11,10 @@ import com.jvmlab.android.jetcounter.CounterViewModel
 
 @Composable
 fun SimpleCounterScreen(navController: NavHostController, model: CounterViewModel, idx: Int) {
-    val counterModelList = model.simpleCounterSetupModel.counterModelList
+    val simpleCounterModel = model.simpleCounterSetupModel.counterModelList[idx]
 
     AppScreenTemplate(
-        title = counterModelList[idx].title,
+        title = simpleCounterModel.title,
         iconOnClick = { navController.popBackStack() }
     ) {
         Column(
@@ -22,10 +22,10 @@ fun SimpleCounterScreen(navController: NavHostController, model: CounterViewMode
             verticalArrangement = Arrangement.Center
         ) {
             SingleCounter(
-                countStringLive = counterModelList[idx].countStringLive,
-                onIncrement = counterModelList[idx]::onIncrement,
-                onDecrement = counterModelList[idx]::onDecrement,
-                )
+                countStringLive = simpleCounterModel.countStringLive,
+                onIncrement = simpleCounterModel::onIncrement,
+                onDecrement = simpleCounterModel::onDecrement,
+            )
         }
     }
 }

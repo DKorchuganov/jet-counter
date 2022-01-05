@@ -6,7 +6,7 @@ import com.jvmlab.android.jetcounter.entities.SingleCounterEntity
 
 @Dao
 interface SingleCounterDao {
-    @Query("SELECT * FROM single_counters")
+    @Query("SELECT * FROM single_counters WHERE parentId IS NULL")
     suspend fun getAll(): List<SingleCounterEntity>
 
     @Insert

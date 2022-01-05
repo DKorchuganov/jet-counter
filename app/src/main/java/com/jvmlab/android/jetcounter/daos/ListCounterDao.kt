@@ -22,8 +22,6 @@ interface ListCounterDao {
     suspend fun insert(entity: ListCounterWithSingleCounters) {
         insertListCounter(entity.listCounterEntity)
         insertSingleCounters(entity.counterEntities)
-        println("!!ATTENTION!!!!!!")
-        println(entity)
     }
 
     @Delete
